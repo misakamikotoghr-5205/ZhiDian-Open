@@ -1,0 +1,554 @@
+{
+  "base_model": "Qwen/Qwen3.5-0.8B",
+  "base_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+  "training_source": "synthetic office tasks only",
+  "dataset": {
+    "source": "synthetic Chinese office requests; no personal files",
+    "base_model": "Qwen/Qwen3.5-0.8B",
+    "seed_train": 623,
+    "seed_eval": 947,
+    "split_policy": "disjoint instruction phrases, sample IDs, and synthetic filenames",
+    "system_prompt_sha256": "f7d28c0c0a574a2c002ef77ece15120f64b49fb888de3aedd9378eb0a964c3c6",
+    "actions": [
+      "files.pdf",
+      "files.pptx",
+      "word.restyle",
+      "pdf.split",
+      "pdf.extract",
+      "sheets.merge",
+      "images.shrink",
+      "text.typeset"
+    ],
+    "train": {
+      "examples": 368,
+      "sha256": "69913d820387d566288c604cca8101e1166c5280606bf027e37852ae3bcf3f6b"
+    },
+    "eval": {
+      "examples": 76,
+      "sha256": "75f72663d6cd097feb36044f2d62904e3d23f033c5d3725e9fc9eadc6a0197f6"
+    }
+  },
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "seed": 583,
+  "train_steps_requested": 96,
+  "rank": 8,
+  "started_at": "2026-11-17T16:54:50+0800",
+  "sequence_lengths": {
+    "max": 372,
+    "mean": 314.8016304347826
+  },
+  "base": {
+    "count": 76,
+    "correct": 8,
+    "valid_json": 66,
+    "seconds": 338.05427050590515,
+    "action_ids_correct": 40,
+    "execution_equivalent": 39,
+    "strict_json": 38,
+    "schema_valid": 62,
+    "offered_actions_only": 65,
+    "by_action": {
+      "pdf.extract": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 1,
+        "execution_equivalent": 0,
+        "invalid_json": 2,
+        "unexpected_action": 0
+      },
+      "word.restyle": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 3,
+        "execution_equivalent": 3,
+        "invalid_json": 2,
+        "unexpected_action": 0
+      },
+      "pdf.split": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 2,
+        "execution_equivalent": 2,
+        "invalid_json": 2,
+        "unexpected_action": 0
+      },
+      "abstain": {
+        "count": 28,
+        "correct": 8,
+        "action_ids_correct": 8,
+        "execution_equivalent": 8,
+        "invalid_json": 3,
+        "unexpected_action": 17
+      },
+      "files.pptx": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 5,
+        "execution_equivalent": 5,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "text.typeset": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 4,
+        "execution_equivalent": 4,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "sheets.merge": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "files.pdf": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "images.shrink": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 5,
+        "execution_equivalent": 5,
+        "invalid_json": 1,
+        "unexpected_action": 0
+      }
+    }
+  },
+  "target_modules": [
+    "model.language_model.layers.0.linear_attn.out_proj",
+    "model.language_model.layers.0.linear_attn.in_proj_qkv",
+    "model.language_model.layers.1.linear_attn.out_proj",
+    "model.language_model.layers.1.linear_attn.in_proj_qkv",
+    "model.language_model.layers.2.linear_attn.out_proj",
+    "model.language_model.layers.2.linear_attn.in_proj_qkv",
+    "model.language_model.layers.3.self_attn.q_proj",
+    "model.language_model.layers.3.self_attn.v_proj",
+    "model.language_model.layers.4.linear_attn.out_proj",
+    "model.language_model.layers.4.linear_attn.in_proj_qkv",
+    "model.language_model.layers.5.linear_attn.out_proj",
+    "model.language_model.layers.5.linear_attn.in_proj_qkv",
+    "model.language_model.layers.6.linear_attn.out_proj",
+    "model.language_model.layers.6.linear_attn.in_proj_qkv",
+    "model.language_model.layers.7.self_attn.q_proj",
+    "model.language_model.layers.7.self_attn.v_proj",
+    "model.language_model.layers.8.linear_attn.out_proj",
+    "model.language_model.layers.8.linear_attn.in_proj_qkv",
+    "model.language_model.layers.9.linear_attn.out_proj",
+    "model.language_model.layers.9.linear_attn.in_proj_qkv",
+    "model.language_model.layers.10.linear_attn.out_proj",
+    "model.language_model.layers.10.linear_attn.in_proj_qkv",
+    "model.language_model.layers.11.self_attn.q_proj",
+    "model.language_model.layers.11.self_attn.v_proj",
+    "model.language_model.layers.12.linear_attn.out_proj",
+    "model.language_model.layers.12.linear_attn.in_proj_qkv",
+    "model.language_model.layers.13.linear_attn.out_proj",
+    "model.language_model.layers.13.linear_attn.in_proj_qkv",
+    "model.language_model.layers.14.linear_attn.out_proj",
+    "model.language_model.layers.14.linear_attn.in_proj_qkv",
+    "model.language_model.layers.15.self_attn.q_proj",
+    "model.language_model.layers.15.self_attn.v_proj",
+    "model.language_model.layers.16.linear_attn.out_proj",
+    "model.language_model.layers.16.linear_attn.in_proj_qkv",
+    "model.language_model.layers.17.linear_attn.out_proj",
+    "model.language_model.layers.17.linear_attn.in_proj_qkv",
+    "model.language_model.layers.18.linear_attn.out_proj",
+    "model.language_model.layers.18.linear_attn.in_proj_qkv",
+    "model.language_model.layers.19.self_attn.q_proj",
+    "model.language_model.layers.19.self_attn.v_proj",
+    "model.language_model.layers.20.linear_attn.out_proj",
+    "model.language_model.layers.20.linear_attn.in_proj_qkv",
+    "model.language_model.layers.21.linear_attn.out_proj",
+    "model.language_model.layers.21.linear_attn.in_proj_qkv",
+    "model.language_model.layers.22.linear_attn.out_proj",
+    "model.language_model.layers.22.linear_attn.in_proj_qkv",
+    "model.language_model.layers.23.self_attn.q_proj",
+    "model.language_model.layers.23.self_attn.v_proj"
+  ],
+  "trainable_parameters": 1794048,
+  "training": {
+    "steps": 96,
+    "micro_batch": 1,
+    "gradient_accumulation": 4,
+    "learning_rate": 0.0002,
+    "loss_first": 2.5630438327789307,
+    "loss_last": 0.0026273346302332357,
+    "seconds": 328.98728132247925,
+    "gpu_peak_mb": 1856.13427734375,
+    "examples_seen": 384
+  },
+  "lora": {
+    "count": 76,
+    "correct": 68,
+    "valid_json": 76,
+    "seconds": 204.4317798614502,
+    "action_ids_correct": 68,
+    "execution_equivalent": 68,
+    "strict_json": 76,
+    "schema_valid": 76,
+    "offered_actions_only": 76,
+    "by_action": {
+      "pdf.extract": {
+        "count": 6,
+        "correct": 3,
+        "action_ids_correct": 3,
+        "execution_equivalent": 3,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "word.restyle": {
+        "count": 6,
+        "correct": 5,
+        "action_ids_correct": 5,
+        "execution_equivalent": 5,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "pdf.split": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "abstain": {
+        "count": 28,
+        "correct": 24,
+        "action_ids_correct": 24,
+        "execution_equivalent": 24,
+        "invalid_json": 0,
+        "unexpected_action": 4
+      },
+      "files.pptx": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "text.typeset": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "sheets.merge": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "files.pdf": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "images.shrink": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      }
+    }
+  },
+  "finished_at": "2026-11-17T17:09:42+0800",
+  "merged_hf_directory": "model-build/office-small-merged",
+  "evaluation_notes": {
+    "decoder": "greedy, enable_thinking=False, max_new_tokens=112, same before and after training",
+    "strict_match": "Exact steps dictionary equality; optional empty/extra parameter also counts as a mismatch.",
+    "execution_equivalent": "Compares action sequence plus pdf.extract page parameter; ignores unused parameters on the other seven actions.",
+    "scope": "76 synthetic heldout examples with disjoint request phrases and filenames; no real-document, OCR, multilingual or presentation-layout benchmark."
+  },
+  "runtime_adapter-full": {
+    "label": "adapter-full",
+    "model": "Qwen3.5-0.8B-Q4_K_M.gguf",
+    "adapter": "office-small-lora.gguf",
+    "runtime_build": "b12110",
+    "cpu_only": true,
+    "count": 76,
+    "correct": 67,
+    "seconds": 76.88250136375427,
+    "by_action": {
+      "pdf.extract": {
+        "count": 6,
+        "correct": 3,
+        "action_ids_correct": 3,
+        "execution_equivalent": 3,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "word.restyle": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "pdf.split": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "abstain": {
+        "count": 28,
+        "correct": 22,
+        "action_ids_correct": 22,
+        "execution_equivalent": 22,
+        "invalid_json": 0,
+        "unexpected_action": 6
+      },
+      "files.pptx": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "text.typeset": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "sheets.merge": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "files.pdf": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "images.shrink": {
+        "count": 6,
+        "correct": 6,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      }
+    },
+    "action_ids_correct": 67,
+    "execution_equivalent": 67,
+    "strict_json": 76,
+    "schema_valid": 76,
+    "offered_actions_only": 76,
+    "valid_json": 76
+  },
+  "runtime_adapter": {
+    "label": "adapter",
+    "model": "Qwen3.5-0.8B-Q4_K_M.gguf",
+    "adapter": "office-small-lora.gguf",
+    "runtime_build": "b12110",
+    "cpu_only": true,
+    "count": 3,
+    "correct": 3,
+    "seconds": 5.556926965713501,
+    "by_action": {
+      "pdf.extract": {
+        "count": 1,
+        "correct": 1,
+        "action_ids_correct": 1,
+        "execution_equivalent": 1,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "abstain": {
+        "count": 1,
+        "correct": 1,
+        "action_ids_correct": 1,
+        "execution_equivalent": 1,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "sheets.merge": {
+        "count": 1,
+        "correct": 1,
+        "action_ids_correct": 1,
+        "execution_equivalent": 1,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      }
+    },
+    "action_ids_correct": 3,
+    "execution_equivalent": 3,
+    "strict_json": 3,
+    "schema_valid": 3,
+    "offered_actions_only": 3,
+    "valid_json": 3
+  },
+  "runtime_base-full": {
+    "label": "base-full",
+    "model": "Qwen3.5-0.8B-Q4_K_M.gguf",
+    "adapter": null,
+    "runtime_build": "b12110",
+    "cpu_only": true,
+    "count": 76,
+    "correct": 0,
+    "seconds": 155.69639229774475,
+    "by_action": {
+      "pdf.extract": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 2,
+        "execution_equivalent": 0,
+        "invalid_json": 2,
+        "unexpected_action": 0
+      },
+      "word.restyle": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 1,
+        "execution_equivalent": 1,
+        "invalid_json": 5,
+        "unexpected_action": 0
+      },
+      "pdf.split": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 1,
+        "execution_equivalent": 1,
+        "invalid_json": 5,
+        "unexpected_action": 0
+      },
+      "abstain": {
+        "count": 28,
+        "correct": 0,
+        "action_ids_correct": 0,
+        "execution_equivalent": 0,
+        "invalid_json": 21,
+        "unexpected_action": 7
+      },
+      "files.pptx": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "text.typeset": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 1,
+        "execution_equivalent": 1,
+        "invalid_json": 3,
+        "unexpected_action": 0
+      },
+      "sheets.merge": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 4,
+        "execution_equivalent": 4,
+        "invalid_json": 1,
+        "unexpected_action": 0
+      },
+      "files.pdf": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 5,
+        "execution_equivalent": 5,
+        "invalid_json": 1,
+        "unexpected_action": 0
+      },
+      "images.shrink": {
+        "count": 6,
+        "correct": 0,
+        "action_ids_correct": 6,
+        "execution_equivalent": 6,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      }
+    },
+    "action_ids_correct": 26,
+    "execution_equivalent": 24,
+    "strict_json": 18,
+    "schema_valid": 38,
+    "offered_actions_only": 38,
+    "valid_json": 38
+  },
+  "runtime_merged": {
+    "label": "merged",
+    "model": "Qwen3.5-0.8B-office-Q4_K_M.gguf",
+    "adapter": null,
+    "runtime_build": "b12110",
+    "cpu_only": true,
+    "count": 3,
+    "correct": 3,
+    "seconds": 7.283329486846924,
+    "by_action": {
+      "pdf.extract": {
+        "count": 1,
+        "correct": 1,
+        "action_ids_correct": 1,
+        "execution_equivalent": 1,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "abstain": {
+        "count": 1,
+        "correct": 1,
+        "action_ids_correct": 1,
+        "execution_equivalent": 1,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      },
+      "sheets.merge": {
+        "count": 1,
+        "correct": 1,
+        "action_ids_correct": 1,
+        "execution_equivalent": 1,
+        "invalid_json": 0,
+        "unexpected_action": 0
+      }
+    },
+    "action_ids_correct": 3,
+    "execution_equivalent": 3,
+    "strict_json": 3,
+    "schema_valid": 3,
+    "offered_actions_only": 3,
+    "valid_json": 3
+  },
+  "package_versions": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.23.0",
+    "peft": "0.21.3",
+    "accelerate": "1.16.0",
+    "numpy": "2.5.5"
+  },
+  "python": "3.14.5"
+}

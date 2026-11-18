@@ -1,0 +1,26 @@
+{
+  "source": "synthetic Chinese office requests; no personal files",
+  "base_model": "Qwen/Qwen3.5-0.8B",
+  "seed_train": 623,
+  "seed_eval": 947,
+  "split_policy": "disjoint instruction phrases, sample IDs, and synthetic filenames",
+  "system_prompt_sha256": "f7d28c0c0a574a2c002ef77ece15120f64b49fb888de3aedd9378eb0a964c3c6",
+  "actions": [
+    "files.pdf",
+    "files.pptx",
+    "word.restyle",
+    "pdf.split",
+    "pdf.extract",
+    "sheets.merge",
+    "images.shrink",
+    "text.typeset"
+  ],
+  "train": {
+    "examples": 368,
+    "sha256": "69913d820387d566288c604cca8101e1166c5280606bf027e37852ae3bcf3f6b"
+  },
+  "eval": {
+    "examples": 76,
+    "sha256": "75f72663d6cd097feb36044f2d62904e3d23f033c5d3725e9fc9eadc6a0197f6"
+  }
+}

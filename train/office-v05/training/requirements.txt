@@ -1,0 +1,8 @@
+# Install CUDA torch from the official cu128 index first; see README.md.
+transformers==5.23.0
+peft==0.21.3
+accelerate==1.16.0
+sentencepiece==0.2.3
+numpy==2.5.5
+safetensors==0.8.0
+tokenizers==0.23.3

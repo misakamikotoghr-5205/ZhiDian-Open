@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:">
+<title>指点</title>
+<link rel="stylesheet" href="overlay.css">
+</head>
+<body class="idle">
+  <img id="frame" alt="" draggable="false">
+  <div id="veil"></div>
+  <div id="pins"></div>
+  <div id="snap"><span class="tag"></span><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+  <div id="drag"></div>
+  <div id="marks"></div>
+  <div id="halo"></div>
+
+  <svg id="aicursor" viewBox="0 0 28 28" width="34" height="34" aria-hidden="true">
+    <path d="M24 3 L4 11.5 L12.5 14.8 L15.8 23.5 Z"/>
+  </svg>
+
+  <section id="ask" class="panel" hidden>
+    <header id="askhead" class="assistant-head">
+      <span class="appmark" aria-hidden="true">↗</span>
+      <div class="assistant-title"><b>指点</b><span id="compactmode">框住文件，就能处理</span></div>
+      <span class="grow"></span>
+      <button id="askclose" class="ghost" type="button" title="退出指向（Esc）" aria-label="退出指向">✕</button>
+    </header>
+    <p id="selectionhint">拖动框住桌面或文件夹里的文件图标</p>
+    <div id="contextcard" hidden></div>
+    <div id="sendlist"></div>
+    <div class="section-label"><span id="quicklabel">从这里开始</span><span id="quicknote">也可以直接输入你的需求</span></div>
+    <div id="presets"></div>
+    <div id="contextactions" hidden></div>
+    <div class="composer">
+      <label class="sr-only" for="q">输入你的需求</label>
+      <textarea id="q" rows="1" autocomplete="off" spellcheck="false" maxlength="2000" placeholder="例如：合并成 PDF"></textarea>
+      <div id="voicepanel" data-state="idle" hidden>
+        <div class="voice-visual" aria-hidden="true">
+          <span class="voice-aura"></span><span class="voice-ring"></span>
+          <div class="voice-orb"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5.5 11v1a6.5 6.5 0 0 0 13 0v-1M12 18.5V22M8.5 22h7"/></svg><span class="voice-check">✓</span></div>
+        </div>
+        <div class="voice-body"><div class="voice-heading"><b id="voice-status" role="status" aria-live="polite">准备语音输入</b><span id="voice-time"></span></div>
+          <div id="voice-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div id="voice-detail"></div>
+          <div class="voice-actions"><button id="voice-stop" type="button" hidden>结束并转写</button><button id="voice-settings" type="button" hidden>语音设置</button></div>
+        </div>
+        <button id="voice-cancel" class="ghost" type="button" title="取消语音输入（Esc）" aria-label="取消语音输入">✕</button>
+      </div>
+      <div class="composer-foot"><span id="inputhint">Enter 发送 · Shift+Enter 换行</span><div class="composer-actions">
+        <button id="qmic" type="button" title="语音输入：单击开始，或按住说话" aria-label="开始语音输入" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5.5 11v1a6.5 6.5 0 0 0 13 0v-1M12 18.5V22M8.5 22h7"/></svg><span class="mic-stop" aria-hidden="true"></span></button>
+        <button id="qsend" type="button" title="发送（Enter）">发送 <span aria-hidden="true">↑</span></button>
+      </div></div>
+    </div>
+    <div class="compact-options"><label><input type="checkbox" id="quickvoice">语音输入</label><details id="quickadvanced"><summary>高级设置</summary><div class="advanced-popover">
+      <button id="asksettings" class="ghost" type="button">打开完整设置</button>
+      <div id="inputmodes" class="mode-tabs" role="tablist" aria-label="处理对象">
+        <button type="button" id="contextmode" role="tab" aria-selected="false" data-input-mode="context">文件操作</button>
+        <button type="button" id="screenmode" role="tab" aria-selected="true" data-input-mode="screen">截图问答</button>
+      </div>
+    <div id="asktools">
+      <button type="button" class="tool" data-qact="copy" title="复制框选截图并回到原窗口 (Ctrl+C)">复制截图</button>
+      <button type="button" class="tool" data-qact="save" title="保存框选截图为 PNG (Ctrl+S)">保存图片</button>
+      <button type="button" class="tool" data-qact="ocr" title="识别框选里的文字并自动复制">提取文字</button>
+      <span class="grow"></span>
+      <button type="button" class="tool scope" data-scope="-1" title="缩小吸附范围 ([)">范围 −</button>
+      <button type="button" class="tool scope" data-scope="1" title="扩大吸附范围 (])">+</button>
+    </div>
+    <div id="hud"></div>
+    </div></details></div>
+  </section>
+
+  <section id="bubble" class="panel" hidden>
+    <header>
+      <span class="who"><i class="dot"></i><b id="bwho"></b><em id="bscripted" hidden>排练脚本</em></span>
+      <span class="grow"></span>
+      <button id="bstop" class="ghost" hidden>停止</button>
+      <button id="bcopy" class="ghost" title="复制回答">复制</button>
+      <button id="bclose" class="ghost" title="关闭">✕</button>
+    </header>
+    <div id="bhistory" hidden></div>
+    <div id="bq"></div>
+    <div id="btext"></div>
+    <div id="bstatus" hidden></div>
+    <footer id="bfoot"></footer>
+  </section>
+
+  <section id="snapshot" class="panel" hidden>
+    <header><b id="stitle"></b><span class="grow"></span><button id="sclose" class="ghost">✕</button></header>
+    <div id="swrap"><img id="simg" alt=""><div id="smarks"></div></div>
+    <p>屏幕上这块内容在钉住之后变了，所以标在当时的快照上，不去指现在的屏幕。</p>
+  </section>
+
+  <!-- Office actions for what is selected in another application: files, or a piece of text. -->
+  <section id="act" class="panel" hidden>
+    <header>
+      <svg class="ico" viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="M5 2.5h6.2L15.5 7v10.5h-10.5z M11 2.5V7h4.5"/></svg>
+      <div class="action-heading"><span class="eyebrow">对选中内容执行操作</span><span id="actwhat"></span></div>
+      <span class="grow"></span>
+      <button id="actclose" class="ghost" title="关闭">✕</button>
+    </header>
+    <div id="actbtns"></div>
+    <div id="actparam" hidden></div>
+    <div id="actstatus" hidden><i class="spin"></i><span id="actmsg"></span></div>
+    <div id="actdone" hidden></div>
+  </section>
+
+  <button id="actpill" class="panel" hidden type="button" title="指点：对选中的内容执行操作">
+    <svg viewBox="0 0 28 28" width="15" height="15" aria-hidden="true"><path d="M4 3 L24 11.5 L15.5 14.8 L12.2 23.5 Z"/></svg>
+  </button>
+
+  <nav id="dock" class="panel" hidden>
+    <span class="brand" title="指点"><svg viewBox="0 0 28 28" width="16" height="16"><path d="M4 3 L24 11.5 L15.5 14.8 L12.2 23.5 Z"/></svg></span>
+    <div id="chips"></div>
+    <button id="dclear" class="ghost" title="释放全部引用">清空</button>
+  </nav>
+
+  <div id="hint" class="panel" hidden></div>
+  <div id="toasts"></div>
+  <script type="module" src="overlay.js"></script>
+</body>
+</html>

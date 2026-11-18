@@ -1,0 +1,9 @@
+venv/
+cache/
+temp/
+wheels/
+converters/
+llama.cpp/
+__pycache__/
+*.log
+*.zip

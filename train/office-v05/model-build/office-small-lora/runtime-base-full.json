@@ -1,0 +1,1068 @@
+{
+  "label": "base-full",
+  "model": "Qwen3.5-0.8B-Q4_K_M.gguf",
+  "adapter": null,
+  "runtime_build": "b12110",
+  "cpu_only": true,
+  "count": 76,
+  "correct": 0,
+  "seconds": 155.69639229774475,
+  "cases": [
+    {
+      "id": "eval-3-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1-3"
+        }
+      ],
+      "actual": [],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件列表，当前没有包含第1-3页的PDF文件，因此无法直接提取指定页。需要用户先确认是否包含第1-3页的PDF文件，或者提供具体的文件名以便我尝试查找。\", \"steps\":[]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件信息，当前选中的是名为'eval0_季度汇报.docx'的Word文档，但用户要求的是'用统一样式整理已选Word'。由于当前选中的是Word文档，无法直接对Word文件进行样式统一操作，因此无法执行任何排版或样式调整命令。\"\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.split",
+          "param": "已提供的ID"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，当前文件名为'eval1_项目资料.pdf'，已包含一个名为'set1_项目资料.pdf'的独立文件。建议将原文件拆分为多个单页PDF文件。\",\"steps\":[{\"actionId\":\"pdf.split\",\"param\":\"已提供的ID\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1007-text.typeset-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据当前上下文，用户希望处理办公资料，但当前文件为空，无法直接操作。根据任务要求，只能选择 availableActions 中的 actionId，无法完成操作。\"",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx",
+          "param": "将eval4_季度汇报.docx转换为PPT格式"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将Word文档转换为PPT演示文稿\",\"steps\":[{\"actionId\":\"files.pptx\",\"param\":\"将eval4_季度汇报.docx转换为PPT格式\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-files.pdf-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，当前系统未提供合并 Excel 或制作 PPT 的选项，但提供了拆分 PDF 的功能。由于用户要求的是‘一份包含所选材料的 PDF 文档’，且当前选中的是两个 PDF 文件，最直接的解决方案是利用系统提供的 'pdf.split' 功能将这两个文件拆分为单页文档。\"",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的操作列表，无法直接生成 PDF 文件，因为当前工具列表中没有'pdf.split'或'pdf.merge'等将 PDF 拆分或合并的选项。您提供的工具列表仅包含合并 Excel、排版和拆分 PDF 的选项，但并未包含将 PDF 文件拆分为多个 PDF 文件的功能。因此，无法完成您要求的操作。\"\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": [],
+      "correct": false,
+      "raw": "```json\n{\n  \"message\": \"根据提供的文件内容，已识别出需要按排版规则整理的文字片段：'项目进度:本周完成初稿, 下周进行复核。人员 8 名,材料 12 份。'\",\n  \"steps\": []\n}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1004-pdf.extract-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"无法将 PDF 文件直接发送到社交账号，当前可用操作为合并 Excel 或一键排版。建议先使用 'sheets.merge' 将 PDF 转换为可编辑的 Excel 文件，再在 Excel 中设置分享权限或导出为可发送的格式。\"",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据当前上下文，用户要求将每一页独立的PDF文件拆分为单页PDF文件。\\\"pdf.split\\\" 工具在提供的 availableActions 中可用，但需要确认是否支持将单个 PDF 文件拆分为多个 PDF 文件。若不支持，则无法完成此操作。\\\"pdf.split\\\" 工具通常用于将多个 PDF 文件合并或拆分，但具体功能需根据实际文档内容确认。\\\"",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件内容，已识别出需要整理的文字片段为：'项目进度:本周完成初稿, 下周进行复核。\\n人员 8 名,材料 12 份。'。该片段包含标题、正文和列表项，符合办公资料排版规则，建议使用自动排版功能进行整理。\"}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-sheets.merge-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，无法将选中的两个CSV文件（eval4_月度数据.csv 和 eval5_月度数据.csv）直接合并为Excel文件。当前系统提供的可用操作只有‘合并成 PDF’和‘拆成单页’，没有‘合并成 Excel’的功能。\\\"steps\\\":[{\\\"actionId\\\":\\\"files.pdf\\\",\\\"param\\\":\\\"合并成 PDF\\\"},{\\\"actionId\\\":\\\"pdf.split\\\",\\\"param\\\":\\\"拆成单页\\\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-pdf.extract-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "pdf.split",
+          "param": "已提供的ID"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件信息，当前任务要求将名为'eval0_项目资料.pdf'的PDF文件拆分为2-7页。\", \"steps\":[{\"actionId\":\"pdf.split\",\"param\":\"已提供的ID\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx",
+          "param": "将eval1_季度汇报.docx转换为PPT格式"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"将Word文档转换为PPT演示文稿\",\"steps\":[{\"actionId\":\"files.pptx\",\"param\":\"将eval1_季度汇报.docx转换为PPT格式\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-2-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx",
+          "param": "将选中的 .docx 文件转换为 PPT 格式"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将已选文档转为汇报用的幻灯片\",\"steps\":[{\"actionId\":\"files.pptx\",\"param\":\"将选中的 .docx 文件转换为 PPT 格式\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-3-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge",
+          "param": "文件1：eval3_月度数据.csv，文件2：eval4_月度数据.csv"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将选中的两个 CSV 文件合并为 Excel 表格\",\"steps\":[{\"actionId\":\"sheets.merge\",\"param\":\"文件1：eval3_月度数据.csv，文件2：eval4_月度数据.csv\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge",
+          "param": "合并两个 CSV 文件为 Excel 工作簿"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将两个 CSV 文件合并为同一个工作簿\",\"steps\":[{\"actionId\":\"sheets.merge\",\"param\":\"合并两个 CSV 文件为 Excel 工作簿\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-2-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的操作列表，当前可用的工具是'pdf.split'，但用户任务要求为PDF各页生成单独文件，这通常需要使用'pdf.split'功能。然而，该工具仅支持将PDF拆分为单页，而非将单页拆分为多个文件。因此，无法直接通过此工具完成将PDF各页生成多个文件的任务。需要进一步确认用户的具体需求，例如是否希望将PDF整体保存为PDF，或者是否有其他工具可用。若用户确实需要将PDF各页分离",
+      "finish_reason": "length"
+    },
+    {
+      "id": "eval-1010-word.restyle-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据当前上下文，用户希望处理办公资料，但当前文件为 Word 格式（eval1010_季度汇报.docx），且选中文字为空。根据任务要求，只能选择 availableActions 中的 actionId，无法完成此操作。\"",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-5-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf",
+          "param": "合并成 PDF"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件列表，当前可用的操作是合并成 PDF 文档。\", \"steps\":[{\"actionId\":\"files.pdf\",\"param\":\"合并成 PDF\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-3-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf",
+          "param": "合并成 PDF"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的操作列表，当前任务是将两个PDF文件合并成一个文件。\", \"steps\":[{\"actionId\":\"files.pdf\",\"param\":\"合并成 PDF\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-files.pptx-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据提供的文件信息，当前任务为将Word文档转换为PPT演示文稿。由于当前上下文仅包含一个名为'eval0_季度汇报.docx'的Word文档，且未提供具体的演示模板，无法直接生成PPT。但您可以使用提供的'images.shrink'工具将文件压缩，以便后续处理。\"",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-2-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink",
+          "param": "图片压缩"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据当前任务，用户希望缩小图片体积。在提供的 availableActions 中，只有 'images.shrink' 选项支持压缩图片功能。因此，将选择此操作。\", \"steps\":[{\"actionId\":\"images.shrink\",\"param\":\"图片压缩\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-2-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "2-7"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，无法直接生成只包含第2-7页的PDF文件。当前系统中提供的工具列表（如合并Excel、压缩图片、拆分PDF、提取指定页等）均无法直接生成或拆分PDF。\\\"pdf.split\\\"工具仅用于将PDF拆分为单页，而\\\"pdf.extract\\\"用于提取指定页，均不具备将整份PDF文件分割为特定页数的功能。\\\"files.pptx\\\"工具用于制作PPT，\\\"sheets.merge\\\"用于合并Excel，均不适用于此",
+      "finish_reason": "length"
+    },
+    {
+      "id": "eval-5-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件信息，当前选中的是名为'eval5_季度汇报.docx'的Word文档，但用户要求的是'规范版式'，通常意味着需要调整文档的整体布局、字体、颜色或样式。由于当前选中的是单个文档而非整个文件组，且系统提供的工具中只有'自动排版'和'一键排版'，无法直接对单个文档进行全局版式调整。因此，最合适的操作是调用'自动排版'功能，对选中文档进行整体排版处理。\"",
+      "finish_reason": "length"
+    },
+    {
+      "id": "eval-4-pdf.split-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据当前上下文，用户要求将每个文件（如 eval4_项目资料.pdf）作为独立PDF文件处理。当前系统工具中未提供直接‘拆分单个PDF文件’的功能，但提供了'pdf.extract'工具，可尝试提取指定页。若用户后续提供具体页码，可尝试调用该工具；若需将文件整体拆分，当前工具集无法直接完成此操作。建议用户确认是否希望尝试使用'pdf.extract'工具提取指定页，或后续提供具体需求。\"}",
+      "finish_reason": "length"
+    },
+    {
+      "id": "eval-1-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink",
+          "param": "已提供的ID"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件信息，已选择图片文件为'eval1_现场照片.png'，当前可用操作为'images.shrink'。将执行压缩操作以生成体积更小的副本。\", \"steps\":[{\"actionId\":\"images.shrink\",\"param\":\"已提供的ID\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink",
+          "param": "image:eval4_现场照片.png"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\n  \"message\": \"使用 availableActions 中的 'images.shrink' 命令对选中的图片进行压缩处理。\",\n  \"steps\": [\n    {\n      \"actionId\": \"images.shrink\",\n      \"param\": \"image:eval4_现场照片.png\"\n    }\n  ]\n}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1002-word.restyle-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据当前上下文，您提供的文件是名为'eval1002_季度汇报.docx'的Word文档，类型是'word'。您希望将这份资料发到社交账号，但当前系统工具中未提供直接发送文件到社交账号的功能。您可用的工具是合并Excel、提取指定页，均不适用于此场景。建议您先确认您是否指的是将Word文档中的内容（如表格、图表）整理成可分享的格式（如PDF、PPT），或者您是否误传了工具名称",
+      "finish_reason": "length"
+    },
+    {
+      "id": "eval-1008-files.pdf-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件列表，当前没有选中任何具体文档进行编辑或发送操作。可用的操作工具中，'text.typeset' 是自动排版工具，但无法直接发送文件到社交账号。需要用户先确认具体要发送的文件内容，或者提供其他操作工具（如文件上传、导出等）才能完成发送任务。\"}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1009-files.pptx-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"无法将 Word 文档直接发送到社交账号，因为社交账号通常不支持直接接收或发送 .docx 文件。您需要先将该文档转换为其他格式（如 PDF、PPT 等），然后使用社交账号的官方功能（如邮件、链接或文件分享）进行发送。\"",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-images.shrink-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"无法直接生成图片副本，当前可用操作为提取指定页或合并成 PDF。建议先通过'pdf.extract'或'pdf.split'将照片拆分为单页，再使用'files.pdf'合并为 PDF 文件，最后再使用'word.restyle'进行排版。\"",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [],
+      "correct": false,
+      "raw": "```json\n{\n  \"message\": \"正在将选中的两个CSV文件（eval0_月度数据.csv 和 eval1_月度数据.csv）合并为一个Excel文件\",\n  \"steps\": []\n}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-3-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink",
+          "param": "已提供的ID"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"使用提供的压缩图片工具将图片缩小体积\",\"steps\":[{\"actionId\":\"images.shrink\",\"param\":\"已提供的ID\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "word.restyle",
+          "param": "文档文件：eval1_季度汇报.docx"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的操作列表，当前可用的排版工具是'word.restyle'（一键排版）。由于用户要求规范版式，且该工具专为排版设计，最直接的下一步是调用此工具对选中的文档进行统一排版处理。\", \"steps\":[{\"actionId\":\"word.restyle\",\"param\":\"文档文件：eval1_季度汇报.docx\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1005-sheets.merge-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据提供的操作列表，当前可用的工具是'word.restyle'（一键排版），但任务要求将资料发到社交账号，该工具不具备此功能。因此无法直接操作。建议用户先通过其他工具（如 Word 或 Excel）对资料进行排版，待完成后再考虑其他发送方式。\"}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-sheets.merge-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "pdf.split",
+          "param": "已提供的ID"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将两个CSV文件合并为Excel表格\",\"steps\":[{\"actionId\":\"pdf.split\",\"param\":\"已提供的ID\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-2-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": [],
+      "correct": false,
+      "raw": "```json\n{\n  \"message\": \"根据提供的操作系统确认信息，当前选中文字为\\\"项目进度:本周完成初稿, 下周进行复核。\\\\n人员 8 名,材料 12 份。\\\"，该文本属于\\\"explorer\\\"应用下的\\\"办公资料\\\"文档，当前格式较为松散。\",\n  \"steps\": []\n}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，无法完成将 PDF 合并成 PDF 的操作。当前可用的操作只有 '合并成 PDF'，但用户提供的 JSON 中并未包含任何合并 PDF 的指令或参数。\\\"合并成 PDF\\\" 操作需要具体的 PDF 文件作为输入，而当前上下文仅提供了两个 PDF 文件，且未指定要合并哪两个文件。\\\"合并成 PDF\\\" 操作需要具体的 PDF 文件作为输入，而当前上下文仅提供了两个 PDF 文件，且未指定要合并哪两个文件",
+      "finish_reason": "length"
+    },
+    {
+      "id": "eval-5-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink",
+          "param": "图片名称：eval5_现场照片.png"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"使用 availableActions 中的 actionId 'images.shrink' 对图片 'eval5_现场照片.png' 进行压缩处理。\", \"steps\":[{\"actionId\":\"images.shrink\",\"param\":\"图片名称：eval5_现场照片.png\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-3-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据当前上下文，用户要求将每个文件拆分为独立的 PDF 文件。当前可用的操作是 'pdf.split'，但需要确认该操作是否支持将单个 PDF 文件拆分为多个 PDF 文件。如果支持，则执行该操作；如果不支持，则告知用户该操作可能无法完成拆分任务。\"}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx",
+          "param": "将 .docx 文件转换为 PPT 格式"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"将选中的 .docx 文件转换为 PPT 格式演示文稿\",\"steps\":[{\"actionId\":\"files.pptx\",\"param\":\"将 .docx 文件转换为 PPT 格式\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-3-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx",
+          "param": "将选中的 .docx 文件转换为 PPT 格式幻灯片"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"将选中的 .docx 文件转换为 PPT 格式幻灯片\",\"steps\":[{\"actionId\":\"files.pptx\",\"param\":\"将选中的 .docx 文件转换为 PPT 格式幻灯片\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-2-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf",
+          "param": "合并成 PDF"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件列表，当前可用的操作是合并成 PDF 文档。\", \"steps\":[{\"actionId\":\"files.pdf\",\"param\":\"合并成 PDF\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-text.typeset-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "word.restyle",
+          "param": "已选中的文字：项目进度:本周完成初稿，下周进行复核。\n人员 8 名，材料 12 份。"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"使用 word.restyle 工具对选中的文字进行一键排版调整\",\"steps\":[{\"actionId\":\"word.restyle\",\"param\":\"已选中的文字：项目进度:本周完成初稿，下周进行复核。\\n人员 8 名，材料 12 份。\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1003-pdf.split-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"无法直接操作社交账号，当前系统未提供社交功能工具。请尝试使用文件工具（如打开文件、保存文件等）来查看或处理该资料，或联系系统管理员。\"}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-5-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的操作系统确认信息，当前任务为按排版规则整理所选文字。系统已识别出选中内容为：'项目进度:本周完成初稿, 下周进行复核。\\n人员 8 名,材料 12 份。'，且当前操作系统为'explorer'，文件为空。由于当前操作系统为'explorer'，无法直接对文件进行排版操作，因此无法执行'自动排版'功能。建议用户先检查是否已选中正确的文件，或确认是否已选中",
+      "finish_reason": "length"
+    },
+    {
+      "id": "eval-0-word.restyle-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"正在尝试自动排版已选Word文档，但当前上下文显示文件名为'eval0_季度汇报.docx'，且选中文字为空，无法直接执行排版操作。请确认是否已选中具体文字内容，或提供具体的排版需求。\"}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1000-files.pdf-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据当前上下文，用户希望将名为'eval1000_项目资料.pdf'和'eval1001_项目资料.pdf'的文档发送到社交账号。当前系统工具中未提供直接发送文件到社交账号的功能，但提供了'word.restyle'（一键排版）和'pdf.split'（拆成单页）工具。由于没有提供直接发送文件的功能，无法直接操作文件到社交账号。建议用户先使用'word.restyle'对文档进行排版，或者",
+      "finish_reason": "length"
+    },
+    {
+      "id": "eval-4-files.pdf-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1-3, 5"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"将两个PDF文件合并为一个文件\",\"steps\":[{\"actionId\":\"pdf.extract\",\"param\":\"1-3, 5\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-files.pptx-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "word.restyle",
+          "param": "已选文档：eval4_季度汇报.docx"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将选中的 .docx 文档转换为幻灯片，当前可用操作为：word.restyle（一键排版）\",\"steps\":[{\"actionId\":\"word.restyle\",\"param\":\"已选文档：eval4_季度汇报.docx\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1,6"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1-6"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的操作指令，将文件'eval4_项目资料.pdf'中的1,6页内容提取出来。\", \"steps\":[{\"actionId\":\"pdf.extract\",\"param\":\"1-6\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink",
+          "param": "图片文件：eval0_现场照片.png"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件列表，当前选中的是名为'eval0_现场照片.png'的图片文件。要生成体积更小的副本，可以使用 availableActions 中的 'images.shrink' 工具。\", \"steps\":[{\"actionId\":\"images.shrink\",\"param\":\"图片文件：eval0_现场照片.png\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "2-7"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.extract",
+          "param": "无"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，无法直接生成只包含第2-7页的PDF文件，因为当前文件列表中没有第2-7页的PDF，且提供的工具（如extract、split）仅能处理已存在的文件，无法凭空创建新文件。\",\"steps\":[{\"actionId\":\"pdf.extract\",\"param\":\"无\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf",
+          "param": "合并两个文件：eval0_项目资料.pdf 和 eval1_项目资料.pdf"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的操作列表，当前可用的工具是'合并成 PDF'，但用户任务要求的是'包含所选材料的PDF文档'，即需要合并两个文件。因此，选择'合并成 PDF'工具。\", \"steps\":[{\"actionId\":\"files.pdf\",\"param\":\"合并两个文件：eval0_项目资料.pdf 和 eval1_项目资料.pdf\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件内容，当前选中的是文本块，但文件列表为空，无法直接对选中的文字进行排版操作。可用的操作只有合并 Excel 和自动排版，但当前没有选中任何可编辑的文档内容。\\\"\", steps\":[{\"actionId\":\"text.typeset\",\"param\":\"自动排版\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-pdf.split-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据当前上下文，用户要求将每一页都独立保存为PDF文件。当前系统工具中，'合并成 PDF' 功能无法直接实现单个页面的独立导出，但'提取指定页'功能可用于从现有PDF中分离特定页。建议先尝试使用'提取指定页'功能，例如提取第1-3页，然后对剩余页面单独处理。若用户后续确认，可进一步尝试'合并成 PDF'功能。\"\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1001-files.pptx-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，无法将 Word 文档直接发送到社交账号。当前可用的操作工具中，没有‘发送文件’或‘导出为社交账号’的功能。您提供的工具列表仅包含拆分、合并、排版、压缩等处理操作，没有发布或发送功能。建议您先使用其他工具（如合并 Excel 或 PDF）处理数据，待处理完成后再考虑发送方式。\"}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-5-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx",
+          "param": "将eval5_季度汇报.docx转换为PPT格式"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"将Word文档转换为PPT演示文稿\",\"steps\":[{\"actionId\":\"files.pptx\",\"param\":\"将eval5_季度汇报.docx转换为PPT格式\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-images.shrink-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"无法直接生成图片副本，当前可用操作为提取指定页（pdf.extract）或合并 Excel 文件（sheets.merge）。\\\"steps\\\":[{\\\"actionId\\\":\\\"pdf.extract\\\",\\\"param\\\":\\\"如 1-3, 5\\\"},{\\\"actionId\\\":\\\"sheets.merge\\\",\\\"param\\\":\\\"合并成一个 Excel\\\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-5-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge",
+          "param": "合并两个CSV文件"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将两个CSV文件合并为Excel表格\",\"steps\":[{\"actionId\":\"sheets.merge\",\"param\":\"合并两个CSV文件\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的操作列表，当前任务为规范Word版式。用户提供了可用的actionId 'word.restyle'，该功能可一键调整排版。建议优先使用此工具对选中的文档进行排版调整。\"}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-2-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，当前文件为 Word 格式（kind: word），未选中任何文本。可用的操作只有 'word.restyle'（一键排版），但用户要求用统一样式整理，而该操作仅适用于 Word 文件，且当前无选中文本。因此无法直接应用此操作。建议用户先选中 Word 文件，再尝试使用 'word.restyle' 进行排版，或询问用户是否已有其他格式需求。\"}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-pdf.extract-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "files.pdf",
+          "param": "合并成 PDF"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据当前上下文，用户希望将选中的文件（eval4_项目资料.pdf）合并为一份只包含第1-3页的PDF。\", \"steps\":[{\"actionId\":\"files.pdf\",\"param\":\"合并成 PDF\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "3-5"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的操作列表，当前可用的工具是'pdf.split'，该工具可用于将PDF文件拆分为单页。由于用户要求新建一份只包含第3-5页的PDF，且当前没有选中特定页的选项，因此无法直接指定第3-5页。但根据任务描述，用户希望生成一份包含特定页数的文件，通常意味着需要调用'pdf.split'工具来拆分，或者如果系统支持批量拆分功能，可尝试调用此工具。由于用户未明确指定要",
+      "finish_reason": "length"
+    },
+    {
+      "id": "eval-3-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件信息，当前选中的是名为'eval3_季度汇报.docx'的Word文档，但用户要求的是'规范版式'。由于当前选中的是Word文档而非PDF，无法直接通过'合并成 PDF'或'自动排版'工具进行PDF版式处理。但可以通过'word.restyle'（一键排版）功能对Word文档进行格式化调整，例如统一字体、行高、对齐方式等，从而提升整体版式规范性。\"\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1006-images.shrink-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据当前上下文，用户希望处理办公资料中的图片文件。当前选中文件为 `eval1006_现场照片.png`，类型是图片。可用的操作工具中，`pdf.extract` 是专门用于提取指定页的，但此文件为图片，无法直接通过此工具提取页。`text.typeset` 是自动排版，不适用于图片。因此，无法直接通过提供的工具完成提取指定页的任务。需要用户确认是否希望将图片转为 PDF 以便提取，或者有其他特定需求",
+      "finish_reason": "length"
+    },
+    {
+      "id": "eval-5-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，当前没有提供具体的页码或操作指令，因此无法直接执行\\\"提取指定页\\\"或\\\"拆成单页\\\"操作。\\\"pdf.extract\\\"需要用户指定具体的页码（如 1-3, 5），而当前上下文仅提供了文件列表，未包含具体的页码信息。\\\"pdf.split\\\"需要用户指定要拆分哪些页。\\\"pdf.extract\\\"和\\\"pdf.split\\\"是可选操作，但需要具体的参数才能执行。\\\"",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-word.restyle-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，当前文件为已选 Word 文档（kind: word），未提供具体排版需求。根据 availableActions，当前没有提供“统一样式整理”的可用工具。建议优先使用已提供的工具，如'images.shrink'（压缩图片）或'text.typeset'（自动排版），但需明确用户的具体排版需求。若用户后续提供具体样式要求，可进一步调用相应工具。\"}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-2-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据实际内容，无法将两个 CSV 文件合并成同一个工作簿。当前可用的操作工具中，没有‘合并成 Excel 工作簿’的功能。用户提供的工具列表包含‘合并成一个 Excel’，但根据系统确认，该操作可能已被禁用或不存在于当前可用动作中。\"",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-4-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf",
+          "param": "合并成 PDF"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"将提供的两个PDF文件合并为一个PDF文件\",\"steps\":[{\"actionId\":\"files.pdf\",\"param\":\"合并成 PDF\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-3-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "text.typeset",
+          "param": "自动排版"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\n  \"message\": \"根据提供的操作系统确认信息，当前文件为\\\"explorer\\\"类型的办公资料，包含\\\"项目进度\\\"和\\\"人员\\\"等文本内容。用户要求将这段文字格式规整，最合适的操作是应用\\\"自动排版\\\"功能。\",\n  \"steps\": [\n    {\"actionId\": \"text.typeset\", \"param\": \"自动排版\"}\n  ]\n}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1011-pdf.split-1",
+      "expected": [],
+      "actual": null,
+      "correct": false,
+      "raw": "{\"message\":\"根据当前上下文，用户希望处理‘explorer' 应用程序中的‘办公资料’文件夹，并选中了名为 'eval1011_项目资料.pdf' 的 PDF 文件。用户希望将 PDF 文件转换为可编辑的 Excel 表格（合并成一个 Excel 文件）。\\\"steps\\\":[{\\\"actionId\\\":\\\"sheets.merge\\\",\\\"param\\\":\\\"合并成一个 Excel\\\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-0-text.typeset-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "sheets.merge",
+          "param": "选中文本：项目进度:本周完成初稿, 下周进行复核。\n人员 8 名,材料 12 份。"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将选中的文本格式化为单行，并保留原意。\",\"steps\":[{\"actionId\":\"sheets.merge\",\"param\":\"选中文本：项目进度:本周完成初稿, 下周进行复核。\\n人员 8 名,材料 12 份。\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-5-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1-3"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf",
+          "param": "合并成 PDF"
+        }
+      ],
+      "correct": false,
+      "raw": "```json\n{\"message\":\"根据提供的文件列表，当前没有包含第1-3页的PDF文件，因此无法直接合并。但根据用户任务，可以执行合并操作。\", \"steps\":[{\"actionId\":\"files.pdf\",\"param\":\"合并成 PDF\"}]}\n```",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge",
+          "param": "合并两个 CSV 文件为 Excel 工作簿"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将两个 CSV 文件合并为同一个工作簿\",\"steps\":[{\"actionId\":\"sheets.merge\",\"param\":\"合并两个 CSV 文件为 Excel 工作簿\"}]}",
+      "finish_reason": "stop"
+    }
+  ],
+  "by_action": {
+    "pdf.extract": {
+      "count": 6,
+      "correct": 0,
+      "action_ids_correct": 2,
+      "execution_equivalent": 0,
+      "invalid_json": 2,
+      "unexpected_action": 0
+    },
+    "word.restyle": {
+      "count": 6,
+      "correct": 0,
+      "action_ids_correct": 1,
+      "execution_equivalent": 1,
+      "invalid_json": 5,
+      "unexpected_action": 0
+    },
+    "pdf.split": {
+      "count": 6,
+      "correct": 0,
+      "action_ids_correct": 1,
+      "execution_equivalent": 1,
+      "invalid_json": 5,
+      "unexpected_action": 0
+    },
+    "abstain": {
+      "count": 28,
+      "correct": 0,
+      "action_ids_correct": 0,
+      "execution_equivalent": 0,
+      "invalid_json": 21,
+      "unexpected_action": 7
+    },
+    "files.pptx": {
+      "count": 6,
+      "correct": 0,
+      "action_ids_correct": 6,
+      "execution_equivalent": 6,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    },
+    "text.typeset": {
+      "count": 6,
+      "correct": 0,
+      "action_ids_correct": 1,
+      "execution_equivalent": 1,
+      "invalid_json": 3,
+      "unexpected_action": 0
+    },
+    "sheets.merge": {
+      "count": 6,
+      "correct": 0,
+      "action_ids_correct": 4,
+      "execution_equivalent": 4,
+      "invalid_json": 1,
+      "unexpected_action": 0
+    },
+    "files.pdf": {
+      "count": 6,
+      "correct": 0,
+      "action_ids_correct": 5,
+      "execution_equivalent": 5,
+      "invalid_json": 1,
+      "unexpected_action": 0
+    },
+    "images.shrink": {
+      "count": 6,
+      "correct": 0,
+      "action_ids_correct": 6,
+      "execution_equivalent": 6,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    }
+  },
+  "action_ids_correct": 26,
+  "execution_equivalent": 24,
+  "strict_json": 18,
+  "schema_valid": 38,
+  "offered_actions_only": 38,
+  "valid_json": 38
+}

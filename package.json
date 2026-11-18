@@ -1,0 +1,47 @@
+{
+  "name": "zhidian",
+  "productName": "Zhidian",
+  "version": "0.5.0",
+  "description": "指点：离线办公助手，框选桌面文件，按模板处理文档、演示和表格。",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "src/main/main.js",
+  "bin": {
+    "zhidian-mcp": "bin/zhidian-mcp.mjs"
+  },
+  "scripts": {
+    "postinstall": "install-electron",
+    "start": "electron .",
+    "setup": "electron . --setup",
+    "rehearse": "electron . --rehearse",
+    "test": "node --test \"test/*.test.js\"",
+    "selftest": "electron . --selftest",
+    "e2e": "node test/e2e/run.mjs",
+    "package": "electron-packager . Zhidian --out dist --overwrite --no-asar --extend-info build/macos-info.plist --ignore=\"^/(test|docs|dist|train|promo|build|hackathon|studio|huggingface|scripts|\\.github)\"",
+    "bundle": "node build/bundle-local.mjs",
+    "release:v05": "node build/package-release.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/misakamikotoghr-5205/ZhiDian-Open.git"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@xmldom/xmldom": "^0.9.12",
+    "jszip": "^3.10.2",
+    "mammoth": "^1.13.0",
+    "marked": "^18.2.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.5.438",
+    "pptxgenjs": "^4.0.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^45.3.1"
+  }
+}

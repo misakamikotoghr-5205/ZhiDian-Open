@@ -1,0 +1,65 @@
+{
+ "base_model": "Qwen/Qwen3.5-0.8B",
+ "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+ "device": "cuda",
+ "splits": {
+  "heldout": {
+   "base": {
+    "n": 120,
+    "point_hit_rate": 0.1,
+    "reply_has_point_rate": 0.55,
+    "answer_names_target_rate": 0.3583,
+    "by_family": {
+     "files": 0.0,
+     "menu": 0.4167,
+     "toolbar": 0.1111
+    },
+    "seconds_per_example": 1.295
+   },
+   "lora": {
+    "n": 120,
+    "point_hit_rate": 0.725,
+    "reply_has_point_rate": 1.0,
+    "answer_names_target_rate": 0.9333,
+    "by_family": {
+     "files": 0.6923,
+     "menu": 0.9167,
+     "toolbar": 0.6111
+    },
+    "seconds_per_example": 2.546
+   }
+  },
+  "val": {
+   "base": {
+    "n": 120,
+    "point_hit_rate": 0.05,
+    "reply_has_point_rate": 0.7833,
+    "answer_names_target_rate": 0.3417,
+    "by_family": {
+     "code": 0.1538,
+     "dialog": 0.037,
+     "form": 0.1667,
+     "prices": 0.0,
+     "settings": 0.0,
+     "table": 0.0
+    },
+    "seconds_per_example": 2.044
+   },
+   "lora": {
+    "n": 120,
+    "point_hit_rate": 0.9417,
+    "reply_has_point_rate": 1.0,
+    "answer_names_target_rate": 0.9333,
+    "by_family": {
+     "code": 1.0,
+     "dialog": 0.8889,
+     "form": 1.0,
+     "prices": 1.0,
+     "settings": 1.0,
+     "table": 0.8571
+    },
+    "seconds_per_example": 2.742
+   }
+  }
+ }
+}

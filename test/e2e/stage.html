@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>指点 演示舞台</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f4f5f7; color: #1d2129; font: 15px/1.6 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', system-ui, sans-serif; }
+  header { background: #fff; border-bottom: 1px solid #dfe2e8; padding: 14px 32px; display: flex; gap: 28px; align-items: center; }
+  header b { font-size: 18px; }
+  header span { color: #6b7385; }
+  main { display: grid; grid-template-columns: 1fr 1fr 360px; gap: 28px; padding: 28px 32px; }
+  .card { background: #fff; border: 1px solid #dfe2e8; border-radius: 12px; padding: 20px 22px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0 0 12px; color: #5a6274; }
+  .price { font-size: 30px; font-weight: 700; color: #d4380d; margin: 10px 0 4px; }
+  .spec { color: #5a6274; margin: 0; padding-left: 18px; }
+  .dialog { background: #fff; border: 1px solid #f0b4a8; border-radius: 12px; padding: 20px 22px; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+  .dialog h3 { margin: 0 0 8px; color: #cf1322; font-size: 16px; }
+  .dialog p { margin: 0 0 18px; color: #3a4150; }
+  .btns { display: flex; gap: 12px; justify-content: flex-end; }
+  button { font: inherit; padding: 7px 22px; border-radius: 8px; border: 1px solid #c9ced9; background: #fff; cursor: pointer; }
+  button.primary { background: #1677ff; border-color: #1677ff; color: #fff; }
+  table { border-collapse: collapse; width: 100%; background: #fff; }
+  th, td { border: 1px solid #dfe2e8; padding: 8px 14px; text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  th { background: #f0f2f5; }
+  .wide { grid-column: 1 / 3; }
+  pre { margin: 0; background: #1e1f26; color: #e6e7ee; border-radius: 12px; padding: 18px 20px; font: 13.5px/1.7 ui-monospace, Menlo, Consolas, monospace; }
+  pre .err { background: rgba(255, 90, 90, .22); display: inline-block; width: 100%; }
+  #log { position: fixed; right: 12px; bottom: 8px; color: #8a91a3; font-size: 12px; }
+</style>
+</head>
+<body>
+<header><b>晴空商城</b><span>笔记本电脑</span><span>手机</span><span>我的订单</span></header>
+<main>
+  <section class="card" data-target="cardA">
+    <h3 data-target="nameA">星河 14 轻薄本</h3>
+    <p>14 英寸 2.8K 屏，重 1.29 kg，续航 18 小时。</p>
+    <div class="price" data-target="priceA">¥ 4,299</div>
+    <ul class="spec"><li>16 GB 内存</li><li>512 GB 固态硬盘</li><li>两年保修</li></ul>
+  </section>
+  <section class="card" data-target="cardB">
+    <h3 data-target="nameB">山岚 15 全能本</h3>
+    <p>15.6 英寸高刷屏，重 1.86 kg，续航 9 小时。</p>
+    <div class="price" data-target="priceB">¥ 3,899</div>
+    <ul class="spec"><li>16 GB 内存</li><li>1 TB 固态硬盘</li><li>一年保修</li></ul>
+  </section>
+  <section class="dialog" data-target="dialog">
+    <h3>保存失败</h3>
+    <p>磁盘空间不足，订单草稿没有保存。清理空间后可以重试。</p>
+    <div class="btns"><button data-target="cancel" id="cancel">取消</button><button class="primary" data-target="retry" id="retry">重试</button></div>
+  </section>
+  <section class="wide">
+    <table data-target="table">
+      <tr><th>季度</th><th>销售额（万元）</th><th>同比</th></tr>
+      <tr><td>第一季度</td><td>1,284</td><td>+12%</td></tr>
+      <tr><td>第二季度</td><td data-target="q2">1,902</td><td>+31%</td></tr>
+      <tr><td>第三季度</td><td>1,467</td><td>-8%</td></tr>
+    </table>
+  </section>
+  <section>
+    <pre data-target="code">def total(items):
+    s = 0
+    for it in items:
+<span class="err" data-target="errline">        s += it.price * it.qty)</span>
+    return s</pre>
+  </section>
+</main>
+<p id="messy" data-target="messy" style="margin: 0 32px; font-size: 16px; color: #1d2129;">会议纪要:今天讨论了Q3的数据,大家认为华东区最好(同比增长31%).</p>
+<div id="log">尚未点击</div>
+<script>
+  for (const b of document.querySelectorAll('button')) b.addEventListener('click', () => { document.getElementById('log').textContent = '点击了：' + b.textContent; });
+</script>
+</body>
+</html>

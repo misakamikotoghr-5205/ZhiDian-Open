@@ -1,0 +1,86 @@
+{
+  "label": "merged",
+  "model": "Qwen3.5-0.8B-office-Q4_K_M.gguf",
+  "adapter": null,
+  "runtime_build": "b12110",
+  "cpu_only": true,
+  "count": 3,
+  "correct": 3,
+  "seconds": 7.283329486846924,
+  "cases": [
+    {
+      "id": "eval-3-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1-3"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1-3"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“提取指定页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.extract\",\"param\":\"1-3\"}]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-1007-text.typeset-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}",
+      "finish_reason": "stop"
+    },
+    {
+      "id": "eval-3-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成一个 Excel”，请确认。\",\"steps\":[{\"actionId\":\"sheets.merge\"}]}",
+      "finish_reason": "stop"
+    }
+  ],
+  "by_action": {
+    "pdf.extract": {
+      "count": 1,
+      "correct": 1,
+      "action_ids_correct": 1,
+      "execution_equivalent": 1,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    },
+    "abstain": {
+      "count": 1,
+      "correct": 1,
+      "action_ids_correct": 1,
+      "execution_equivalent": 1,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    },
+    "sheets.merge": {
+      "count": 1,
+      "correct": 1,
+      "action_ids_correct": 1,
+      "execution_equivalent": 1,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    }
+  },
+  "action_ids_correct": 3,
+  "execution_equivalent": 3,
+  "strict_json": 3,
+  "schema_valid": 3,
+  "offered_actions_only": 3,
+  "valid_json": 3
+}

@@ -1,0 +1,16 @@
+指点 (Zhidian)
+Copyright 2026 Zhidian contributors
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This repository contains:
+- the application's source code (src/, bin/, build/, test/, train/, studio/)
+- models/office-small-lora.gguf and models/zhidian-pointer-qwen3.5-0.8b.gguf,
+  LoRA adapters trained by this project for the Qwen3.5-0.8B model
+
+It does not contain, and downloads on first run or build with their own licences:
+- the llama.cpp runtime (MIT)
+- Qwen3.5 model files in GGUF form (Apache-2.0)
+
+Libraries installed from npm keep their own licences (MIT, Apache-2.0,
+BSD-2-Clause); see each package under node_modules/.

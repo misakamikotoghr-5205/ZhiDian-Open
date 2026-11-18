@@ -1,0 +1,1024 @@
+{
+  "count": 76,
+  "correct": 68,
+  "valid_json": 76,
+  "seconds": 204.4317798614502,
+  "cases": [
+    {
+      "id": "eval-3-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1-3"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1-3"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“提取指定页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.extract\",\"param\":\"1-3\"}]}\n"
+    },
+    {
+      "id": "eval-0-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“一键排版”，请确认。\",\"steps\":[{\"actionId\":\"word.restyle\"}]}\n"
+    },
+    {
+      "id": "eval-1-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“拆成单页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.split\"}]}\n"
+    },
+    {
+      "id": "eval-1007-text.typeset-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-4-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“做成 PPT”，请确认。\",\"steps\":[{\"actionId\":\"files.pptx\"}]}\n"
+    },
+    {
+      "id": "eval-0-files.pdf-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-4-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“拆成单页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.split\"}]}\n"
+    },
+    {
+      "id": "eval-1-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“自动排版”，请确认。\",\"steps\":[{\"actionId\":\"text.typeset\"}]}\n"
+    },
+    {
+      "id": "eval-1004-pdf.extract-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-0-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“拆成单页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.split\"}]}\n"
+    },
+    {
+      "id": "eval-0-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“自动排版”，请确认。\",\"steps\":[{\"actionId\":\"text.typeset\"}]}\n"
+    },
+    {
+      "id": "eval-4-sheets.merge-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-0-pdf.extract-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将对所选内容执行“拆成单页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.split\"}]}\n"
+    },
+    {
+      "id": "eval-1-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“做成 PPT”，请确认。\",\"steps\":[{\"actionId\":\"files.pptx\"}]}\n"
+    },
+    {
+      "id": "eval-2-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“做成 PPT”，请确认。\",\"steps\":[{\"actionId\":\"files.pptx\"}]}\n"
+    },
+    {
+      "id": "eval-3-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成一个 Excel”，请确认。\",\"steps\":[{\"actionId\":\"sheets.merge\"}]}\n"
+    },
+    {
+      "id": "eval-4-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成一个 Excel”，请确认。\",\"steps\":[{\"actionId\":\"sheets.merge\"}]}\n"
+    },
+    {
+      "id": "eval-2-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“拆成单页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.split\"}]}\n"
+    },
+    {
+      "id": "eval-1010-word.restyle-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-5-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成 PDF”，请确认。\",\"steps\":[{\"actionId\":\"files.pdf\"}]}\n"
+    },
+    {
+      "id": "eval-3-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成 PDF”，请确认。\",\"steps\":[{\"actionId\":\"files.pdf\"}]}\n"
+    },
+    {
+      "id": "eval-0-files.pptx-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-2-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“压缩图片”，请确认。\",\"steps\":[{\"actionId\":\"images.shrink\"}]}\n"
+    },
+    {
+      "id": "eval-2-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "2-7"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将对所选内容执行“拆成单页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.split\"}]}\n"
+    },
+    {
+      "id": "eval-5-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“一键排版”，请确认。\",\"steps\":[{\"actionId\":\"word.restyle\"}]}\n"
+    },
+    {
+      "id": "eval-4-pdf.split-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"当前没有可用的对应操作，请重新框选合适的文件。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-1-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“压缩图片”，请确认。\",\"steps\":[{\"actionId\":\"images.shrink\"}]}\n"
+    },
+    {
+      "id": "eval-4-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“压缩图片”，请确认。\",\"steps\":[{\"actionId\":\"images.shrink\"}]}\n"
+    },
+    {
+      "id": "eval-1002-word.restyle-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-1008-files.pdf-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-1009-files.pptx-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-0-images.shrink-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-0-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成一个 Excel”，请确认。\",\"steps\":[{\"actionId\":\"sheets.merge\"}]}\n"
+    },
+    {
+      "id": "eval-3-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“压缩图片”，请确认。\",\"steps\":[{\"actionId\":\"images.shrink\"}]}\n"
+    },
+    {
+      "id": "eval-1-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“一键排版”，请确认。\",\"steps\":[{\"actionId\":\"word.restyle\"}]}\n"
+    },
+    {
+      "id": "eval-1005-sheets.merge-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-0-sheets.merge-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"当前没有可用的对应操作，请重新框选合适的文件。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-2-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“自动排版”，请确认。\",\"steps\":[{\"actionId\":\"text.typeset\"}]}\n"
+    },
+    {
+      "id": "eval-1-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成 PDF”，请确认。\",\"steps\":[{\"actionId\":\"files.pdf\"}]}\n"
+    },
+    {
+      "id": "eval-5-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“压缩图片”，请确认。\",\"steps\":[{\"actionId\":\"images.shrink\"}]}\n"
+    },
+    {
+      "id": "eval-3-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“拆成单页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.split\"}]}\n"
+    },
+    {
+      "id": "eval-0-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“做成 PPT”，请确认。\",\"steps\":[{\"actionId\":\"files.pptx\"}]}\n"
+    },
+    {
+      "id": "eval-3-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“做成 PPT”，请确认。\",\"steps\":[{\"actionId\":\"files.pptx\"}]}\n"
+    },
+    {
+      "id": "eval-2-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成 PDF”，请确认。\",\"steps\":[{\"actionId\":\"files.pdf\"}]}\n"
+    },
+    {
+      "id": "eval-4-text.typeset-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将对所选内容执行“一键排版”，请确认。\",\"steps\":[{\"actionId\":\"word.restyle\"}]}\n"
+    },
+    {
+      "id": "eval-1003-pdf.split-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-5-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“自动排版”，请确认。\",\"steps\":[{\"actionId\":\"text.typeset\"}]}\n"
+    },
+    {
+      "id": "eval-0-word.restyle-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"当前没有可用的对应操作，请重新框选合适的文件。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-1000-files.pdf-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-4-files.pdf-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"当前没有可用的对应操作，请重新框选合适的文件。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-4-files.pptx-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"当前没有可用的对应操作，请重新框选合适的文件。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-4-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1,6"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1,6"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“提取指定页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.extract\",\"param\":\"1,6\"}]}\n"
+    },
+    {
+      "id": "eval-0-images.shrink-0",
+      "expected": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "images.shrink"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“压缩图片”，请确认。\",\"steps\":[{\"actionId\":\"images.shrink\"}]}\n"
+    },
+    {
+      "id": "eval-0-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "2-7"
+        }
+      ],
+      "actual": [],
+      "correct": false,
+      "raw": "{\"message\":\"当前没有可用的对应操作，请重新框选合适的文件。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-0-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成 PDF”，请确认。\",\"steps\":[{\"actionId\":\"files.pdf\"}]}\n"
+    },
+    {
+      "id": "eval-4-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“自动排版”，请确认。\",\"steps\":[{\"actionId\":\"text.typeset\"}]}\n"
+    },
+    {
+      "id": "eval-0-pdf.split-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将对所选内容执行“合并成 PDF”，请确认。\",\"steps\":[{\"actionId\":\"files.pdf\"}]}\n"
+    },
+    {
+      "id": "eval-1001-files.pptx-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-5-files.pptx-0",
+      "expected": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pptx"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“做成 PPT”，请确认。\",\"steps\":[{\"actionId\":\"files.pptx\"}]}\n"
+    },
+    {
+      "id": "eval-4-images.shrink-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-5-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成一个 Excel”，请确认。\",\"steps\":[{\"actionId\":\"sheets.merge\"}]}\n"
+    },
+    {
+      "id": "eval-4-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将对所选内容执行“自动排版”，请确认。\",\"steps\":[{\"actionId\":\"text.typeset\"}]}\n"
+    },
+    {
+      "id": "eval-2-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“一键排版”，请确认。\",\"steps\":[{\"actionId\":\"word.restyle\"}]}\n"
+    },
+    {
+      "id": "eval-4-pdf.extract-1",
+      "expected": [],
+      "actual": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将对所选内容执行“合并成 PDF”，请确认。\",\"steps\":[{\"actionId\":\"files.pdf\"}]}\n"
+    },
+    {
+      "id": "eval-1-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "3-5"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "correct": false,
+      "raw": "{\"message\":\"将对所选内容执行“拆成单页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.split\"}]}\n"
+    },
+    {
+      "id": "eval-3-word.restyle-0",
+      "expected": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "word.restyle"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“一键排版”，请确认。\",\"steps\":[{\"actionId\":\"word.restyle\"}]}\n"
+    },
+    {
+      "id": "eval-1006-images.shrink-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-5-pdf.split-0",
+      "expected": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.split"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“拆成单页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.split\"}]}\n"
+    },
+    {
+      "id": "eval-4-word.restyle-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"当前没有可用的对应操作，请重新框选合适的文件。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-2-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成一个 Excel”，请确认。\",\"steps\":[{\"actionId\":\"sheets.merge\"}]}\n"
+    },
+    {
+      "id": "eval-4-files.pdf-0",
+      "expected": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "files.pdf"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成 PDF”，请确认。\",\"steps\":[{\"actionId\":\"files.pdf\"}]}\n"
+    },
+    {
+      "id": "eval-3-text.typeset-0",
+      "expected": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "text.typeset"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“自动排版”，请确认。\",\"steps\":[{\"actionId\":\"text.typeset\"}]}\n"
+    },
+    {
+      "id": "eval-1011-pdf.split-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-0-text.typeset-1",
+      "expected": [],
+      "actual": [],
+      "correct": true,
+      "raw": "{\"message\":\"这个要求不属于当前可用的办公操作，请明确选择支持的处理方式。\",\"steps\":[]}\n"
+    },
+    {
+      "id": "eval-5-pdf.extract-0",
+      "expected": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1-3"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "pdf.extract",
+          "param": "1-3"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“提取指定页”，请确认。\",\"steps\":[{\"actionId\":\"pdf.extract\",\"param\":\"1-3\"}]}\n"
+    },
+    {
+      "id": "eval-1-sheets.merge-0",
+      "expected": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "actual": [
+        {
+          "actionId": "sheets.merge"
+        }
+      ],
+      "correct": true,
+      "raw": "{\"message\":\"将对所选内容执行“合并成一个 Excel”，请确认。\",\"steps\":[{\"actionId\":\"sheets.merge\"}]}\n"
+    }
+  ],
+  "by_action": {
+    "pdf.extract": {
+      "count": 6,
+      "correct": 3,
+      "action_ids_correct": 3,
+      "execution_equivalent": 3,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    },
+    "word.restyle": {
+      "count": 6,
+      "correct": 5,
+      "action_ids_correct": 5,
+      "execution_equivalent": 5,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    },
+    "pdf.split": {
+      "count": 6,
+      "correct": 6,
+      "action_ids_correct": 6,
+      "execution_equivalent": 6,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    },
+    "abstain": {
+      "count": 28,
+      "correct": 24,
+      "action_ids_correct": 24,
+      "execution_equivalent": 24,
+      "invalid_json": 0,
+      "unexpected_action": 4
+    },
+    "files.pptx": {
+      "count": 6,
+      "correct": 6,
+      "action_ids_correct": 6,
+      "execution_equivalent": 6,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    },
+    "text.typeset": {
+      "count": 6,
+      "correct": 6,
+      "action_ids_correct": 6,
+      "execution_equivalent": 6,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    },
+    "sheets.merge": {
+      "count": 6,
+      "correct": 6,
+      "action_ids_correct": 6,
+      "execution_equivalent": 6,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    },
+    "files.pdf": {
+      "count": 6,
+      "correct": 6,
+      "action_ids_correct": 6,
+      "execution_equivalent": 6,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    },
+    "images.shrink": {
+      "count": 6,
+      "correct": 6,
+      "action_ids_correct": 6,
+      "execution_equivalent": 6,
+      "invalid_json": 0,
+      "unexpected_action": 0
+    }
+  },
+  "action_ids_correct": 68,
+  "execution_equivalent": 68,
+  "strict_json": 76,
+  "schema_valid": 76,
+  "offered_actions_only": 76
+}

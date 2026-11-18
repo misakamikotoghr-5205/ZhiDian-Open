@@ -1,0 +1,7 @@
+{
+ "gpu": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+ "cpu_count": 12,
+ "seconds": 4502,
+ "llama_cpp_tag": "b12110",
+ "stage": "train"
+}

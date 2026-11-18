@@ -1,0 +1,230 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'claude/**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci --ignore-scripts
+      - run: npm test
+        # Plain Node tests import Electron only as a path; they do not launch it.
+        env: { ELECTRON_OVERRIDE_DIST_PATH: '${{ runner.temp }}/electron-not-used-by-node-tests' }
+
+  e2e-linux:
+    name: Office artifact integration on Linux
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # Exercise the large capability policy, with real converters and no inference.
+      # Unit tests separately enforce resource-based tier selection and denied commands.
+      ZHIDIAN_OFFICE_TEST_TIER: large
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Desktop tools and fonts
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb fonts-noto-cjk
+      - run: npm ci
+      - name: Electron test driver
+        run: npm install --no-save --package-lock=false --ignore-scripts playwright@1.65.1
+      - name: Printing preserves local images without contacting document URLs
+        run: xvfb-run -a -s "-screen 0 1440x900x24" node test/e2e/office-print-offline.mjs
+      - name: Real PDF and PPTX outputs for every document template
+        run: xvfb-run -a -s "-screen 0 1440x900x24" node test/e2e/office-templates.mjs
+      - name: Allowed Office actions preserve inputs and never overwrite existing outputs
+        run: xvfb-run -a -s "-screen 0 1440x900x24" node test/e2e/office-invariants.mjs
+
+  e2e-windows:
+    name: Packaged v0.5 Windows UI and file-context boundaries
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - name: Native parser, file-region identity, cancellation and model-policy tests
+        run: node --test test/desktop-context.test.js test/file-regions.test.js test/context-service.test.js test/v05-runtime-policy.test.js
+      - name: Cache pinned base models and runtime
+        uses: actions/cache@v4
+        with:
+          path: |
+            models/Qwen*.gguf
+            models/runtime
+          key: offline-v05-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('src/main/local/catalog.js', 'build/bundle-local.mjs') }}
+      - name: Verify and bundle small + large models, trained Office LoRA and runtime
+        run: npm run bundle
+      - run: npm run package
+      - name: Run actual packaged UI and IPC smoke checks without GPU inference
+        run: node test/e2e/v05-smoke.mjs
+        env:
+          ZHIDIAN_EXPECT_BUNDLED: '1'
+          ZHIDIAN_SMOKE_OUT: '${{ runner.temp }}/e2e-v05'
+      - name: Advanced model downloads, progress, cancellation and settings reopen
+        run: node test/e2e/local-install.mjs
+        env:
+          ZHIDIAN_SMOKE_OUT: '${{ runner.temp }}/e2e-v05'
+      - name: Left-click capture, right-click cancel and Escape regression checks
+        run: node test/e2e/capture-clicks.mjs
+        env:
+          ZHIDIAN_SMOKE_OUT: '${{ runner.temp }}/e2e-v05'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true   # screenshots are a convenience; a full artifact quota must not fail the tests
+        with:
+          name: e2e-v05-windows
+          path: |
+            ${{ runner.temp }}/e2e-v05/**/*.png
+            ${{ runner.temp }}/e2e-v05/**/result.json
+          if-no-files-found: ignore
+
+  # v0.5 releases Windows first. The offline package is started and checked before archiving.
+  # Packaging is slow and only needed before a release, so it runs for
+  # a release (see the job above), when started by hand, or when the commit message contains
+  # [package].
+  # A draft release, made once, before packaging attaches the verified archive to it.
+  # Two ways to ask for one:
+  #   - push a version tag (v0.1.0)
+  #   - write [release v0.1.0] in a commit message: the draft then names that tag and points at
+  #     that commit, and GitHub creates the tag when a person publishes the draft
+  draft:
+    name: Draft release
+    if: startsWith(github.ref, 'refs/tags/v') || contains(github.event.head_commit.message, '[release v')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.which.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Which version
+        id: which
+        env: { HEAD_MESSAGE: '${{ github.event.head_commit.message }}' }
+        run: |
+          tag=""
+          case "$GITHUB_REF" in refs/tags/v*) tag="$GITHUB_REF_NAME" ;; esac
+          if [ -z "$tag" ]; then tag=$(printf '%s' "$HEAD_MESSAGE" | sed -n 's/.*\[release \(v[0-9][0-9A-Za-z.-]*\)\].*/\1/p' | head -1); fi
+          test -n "$tag"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "release: $tag"
+      - name: Create the release and attach core LoRA weights & demo video
+        env: { GH_TOKEN: '${{ github.token }}', GH_REPO: '${{ github.repository }}', TAG: '${{ steps.which.outputs.tag }}' }
+        run: |
+          notes="docs/releases/$TAG.md"
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            if [ "$(gh release view "$TAG" --json isDraft --jq .isDraft)" = true ]; then
+              gh release edit "$TAG" --target "$GITHUB_SHA"
+            else
+              released_sha=$(gh api "repos/$GH_REPO/commits/$TAG" --jq .sha)
+              if [ "$released_sha" != "$GITHUB_SHA" ]; then
+                echo "::error::Published $TAG points to $released_sha, not this build. Use a new release version."
+                exit 1
+              fi
+            fi
+            echo "a release for this commit exists already; the archives will be attached to it"
+          elif [ -f "$notes" ]; then
+            gh release create "$TAG" --target "$GITHUB_SHA" --title "指点 ZhiDian $TAG" --notes-file "$notes" --latest
+          else
+            gh release create "$TAG" --target "$GITHUB_SHA" --title "指点 ZhiDian $TAG" --notes "安装和使用见 README。" --latest
+          fi
+          mkdir -p release-core
+          cp models/office-small-lora.gguf models/zhidian-pointer-qwen3.5-0.8b.gguf models/office-adapter.json studio/assets/zhidian-vm-demo.mp4 release-core/
+          (cd release-core && sha256sum * > SHA256SUMS.txt)
+          gh release upload "$TAG" release-core/* --clobber
+
+  package:
+    name: Package and start the packaged app (${{ matrix.os }})
+    needs: draft
+    # (When no release is asked for, the job above is skipped, and this one still has to run.)
+    if: ${{ !cancelled() && needs.draft.result != 'failure' && (needs.draft.result == 'success' || github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[package]')) }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    permissions:
+      contents: write   # to attach the archives to the draft release
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - name: Cache pinned base models and runtime
+        uses: actions/cache@v4
+        with:
+          path: |
+            models/Qwen*.gguf
+            models/runtime
+          key: offline-v05-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('src/main/local/catalog.js', 'build/bundle-local.mjs') }}
+      - name: Verify and bundle all offline assets before packaging
+        run: npm run bundle
+      - run: npm run package
+      - name: What was packaged
+        shell: bash
+        run: |
+          ls dist
+          app=""
+          for d in dist/*/resources/app dist/*/Zhidian.app/Contents/Resources/app; do
+            if [ -d "$d" ]; then app="$d"; fi
+          done
+          test -n "$app"
+          echo "app files in: $app"
+          ls "$app"
+          # llama-server reads the verified model and trained Office LoRA files in place.
+          ls -la "$app"/models/*.gguf
+          test -f "$app/models/office-small-lora.gguf"
+          test -f "$app/models/office-adapter.json"
+          test -f "$app/models/bundle-manifest.json"
+          test ! -e "$app/promo" && test ! -e "$app/test"
+      - name: Start the packaged app and verify compact UI, offline readiness and IPC
+        run: node test/e2e/v05-smoke.mjs
+        env:
+          ZHIDIAN_EXPECT_BUNDLED: '1'
+          ZHIDIAN_SMOKE_OUT: '${{ runner.temp }}/package-v05'
+      - name: Split offline archive into release assets below 2 GiB
+        shell: bash
+        run: |
+          mkdir -p out
+          version=$(node -p 'JSON.parse(require("fs").readFileSync("package.json","utf8")).version')
+          7z a -t7z -v1900m -bso0 "out/Zhidian-v${version}-windows-x64.7z" ./dist/Zhidian-win32-x64
+          printf '%s\n' '指点离线版包含大小模型和 Office LoRA，采用分卷压缩。' '请下载本版本全部 .7z.001、.7z.002 等分卷，放到同一个文件夹。' '使用 7-Zip 打开 .7z.001 并解压；不要分别解压各个分卷。' '解压完成后打开 Zhidian-win32-x64/Zhidian.exe，不需要下载模型。' > out/解压说明.txt
+          ls -la out
+      - uses: actions/upload-artifact@v4
+        continue-on-error: true   # the archive is large; when the storage allowance is used up the job still says whether the app starts
+        with: { name: 'zhidian-${{ matrix.os }}', path: out/, retention-days: 5, compression-level: 0 }
+      - name: Attach to the draft release
+        if: needs.draft.outputs.tag != ''
+        shell: bash
+        env: { GH_TOKEN: '${{ github.token }}', GH_REPO: '${{ github.repository }}', TAG: '${{ needs.draft.outputs.tag }}' }
+        run: gh release upload "$TAG" out/* --clobber
+
+  publish:
+    name: Publish verified release
+    needs: [draft, unit, e2e-linux, e2e-windows, package]
+    if: ${{ success() && needs.draft.outputs.tag != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Publish after every test and platform package succeeds
+        env: { GH_TOKEN: '${{ github.token }}', GH_REPO: '${{ github.repository }}', TAG: '${{ needs.draft.outputs.tag }}' }
+        run: gh release edit "$TAG" --draft=false --prerelease=false --latest
+
