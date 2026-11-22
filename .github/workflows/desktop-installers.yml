@@ -1,0 +1,120 @@
+name: Desktop installers (macOS + Linux)
+
+on:
+  push:
+    branches: ['release/macos-linux-installers']
+    tags: ['v*']
+  workflow_dispatch:
+
+concurrency:
+  group: desktop-installers-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Lite installer (${{ matrix.platform }} / ${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { runner: macos-15, platform: macos, arch: arm64 }
+          - { runner: macos-15-intel, platform: macos, arch: x64 }
+          - { runner: ubuntu-24.04, platform: linux, arch: x64 }
+          - { runner: ubuntu-24.04-arm, platform: linux, arch: arm64 }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Unit tests
+        run: npm test
+        env:
+          ELECTRON_OVERRIDE_DIST_PATH: '${{ runner.temp }}/electron-not-used-by-node-tests'
+      - name: Build native installer and portable archive
+        run: node build/package-desktop.mjs
+      - name: Check packaged Electron architecture
+        shell: bash
+        env:
+          EXPECT_ARCH: '${{ matrix.arch }}'
+        run: |
+          version=$(node -p 'JSON.parse(require("fs").readFileSync("package.json","utf8")).version')
+          if [[ "${{ matrix.platform }}" == 'macos' ]]; then
+            executable="dist/desktop-builds/Zhidian-darwin-$EXPECT_ARCH/Zhidian.app/Contents/MacOS/Zhidian"
+          else
+            executable="dist/desktop-builds/Zhidian-linux-$EXPECT_ARCH/Zhidian"
+            dpkg-deb --contents "dist/installers/Zhidian-v$version-linux-$EXPECT_ARCH-lite.deb" | grep -F 'usr/share/applications/zhidian.desktop'
+          fi
+          test -x "$executable"
+          EXPECT_ARCH="$EXPECT_ARCH" ELECTRON_RUN_AS_NODE=1 "$executable" -e 'if (process.arch !== process.env.EXPECT_ARCH) process.exit(2); console.log("Electron", process.versions.electron, process.platform, process.arch)'
+      - name: Upload installers to verification gate
+        uses: actions/upload-artifact@v4
+        with:
+          name: zhidian-installer-${{ matrix.platform }}-${{ matrix.arch }}
+          path: dist/installers/*
+          if-no-files-found: error
+          retention-days: 5
+          compression-level: 0
+
+  publish:
+    name: Verify all four native builds and upload to GitHub Release
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: zhidian-installer-*
+          path: release-assets
+          merge-multiple: true
+      - name: Check all assets and SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd release-assets
+          for platform in macos linux; do
+            for arch in x64 arm64; do
+              test -s "SHA256SUMS-$platform-$arch.txt"
+              sha256sum -c "SHA256SUMS-$platform-$arch.txt"
+            done
+          done
+          test "$(find . -maxdepth 1 -type f | wc -l)" -eq 12
+      - name: Attach installers to release and update instructions
+        shell: bash
+        env:
+          GH_TOKEN: '${{ github.token }}'
+          GH_REPO: '${{ github.repository }}'
+          REF_TYPE: '${{ github.ref_type }}'
+          REF_NAME: '${{ github.ref_name }}'
+        run: |
+          set -euo pipefail
+          if [[ "$REF_TYPE" == 'tag' ]]; then
+            tag="$REF_NAME"
+          else
+            tag="v$(node -p 'JSON.parse(require("fs").readFileSync("package.json","utf8")).version')"
+          fi
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            if [[ "$REF_TYPE" != 'tag' ]]; then
+              echo "::error::Release $tag does not exist. Refusing to tag a development branch."
+              exit 1
+            fi
+            gh release create "$tag" --target "$GITHUB_SHA" --title "指点 ZhiDian $tag" --notes-file docs/releases/desktop-installers.md
+          fi
+          gh release upload "$tag" release-assets/* --clobber
+          notes=$(mktemp)
+          gh release view "$tag" --json body --jq .body > "$notes"
+          if ! grep -Fq 'macOS/Linux Lite installers' "$notes"; then
+            { cat "$notes"; printf '\n\n---\n\n'; cat docs/releases/desktop-installers.md; } > "$notes.new"
+            gh release edit "$tag" --notes-file "$notes.new"
+          fi
+          gh release view "$tag" --json url,assets --jq '{url: .url, files: [.assets[].name]}'
