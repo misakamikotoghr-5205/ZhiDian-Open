@@ -105,8 +105,8 @@ jobs:
       - name: Attach verified installers to version release
         shell: bash
         env:
-          GH_TOKEN: '\${{ github.token }}'
-          GH_REPO: '\${{ github.repository }}'
+          GH_TOKEN: '${{ github.token }}'
+          GH_REPO: '${{ github.repository }}'
         run: |
           set -euo pipefail
           tag="$GITHUB_REF_NAME"
