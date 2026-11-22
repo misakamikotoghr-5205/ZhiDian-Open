@@ -2,7 +2,7 @@ name: Desktop installers (macOS + Linux)
 
 on:
   push:
-    branches: ['release/macos-linux-installers']
+    branches: [main]
     tags: ['v*']
   workflow_dispatch:
 
@@ -63,21 +63,18 @@ jobs:
           retention-days: 5
           compression-level: 0
 
-  publish:
-    name: Verify all four native builds and upload to GitHub Release
+  verify:
+    name: Verify installers and SHA-256 checksums
     needs: build
     runs-on: ubuntu-24.04
     timeout-minutes: 15
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           pattern: zhidian-installer-*
           path: release-assets
           merge-multiple: true
-      - name: Check all assets and SHA-256
+      - name: Verify all four platform packages
         shell: bash
         run: |
           set -euo pipefail
@@ -89,25 +86,36 @@ jobs:
             done
           done
           test "$(find . -maxdepth 1 -type f | wc -l)" -eq 12
-      - name: Attach installers to release and update instructions
+
+  publish:
+    name: Publish installers to tagged GitHub Release
+    needs: verify
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: zhidian-installer-*
+          path: release-assets
+          merge-multiple: true
+      - name: Attach verified installers to version release
         shell: bash
         env:
-          GH_TOKEN: '${{ github.token }}'
-          GH_REPO: '${{ github.repository }}'
-          REF_TYPE: '${{ github.ref_type }}'
-          REF_NAME: '${{ github.ref_name }}'
+          GH_TOKEN: '\${{ github.token }}'
+          GH_REPO: '\${{ github.repository }}'
         run: |
           set -euo pipefail
-          if [[ "$REF_TYPE" == 'tag' ]]; then
-            tag="$REF_NAME"
-          else
-            tag="v$(node -p 'JSON.parse(require("fs").readFileSync("package.json","utf8")).version')"
+          tag="$GITHUB_REF_NAME"
+          expected_tag="v$(node -p 'JSON.parse(require("fs").readFileSync("package.json","utf8")).version')"
+          if [[ "$tag" != "$expected_tag" ]]; then
+            echo "::error::Ref $tag does not match package.json version $expected_tag"
+            exit 1
           fi
           if ! gh release view "$tag" >/dev/null 2>&1; then
-            if [[ "$REF_TYPE" != 'tag' ]]; then
-              echo "::error::Release $tag does not exist. Refusing to tag a development branch."
-              exit 1
-            fi
             gh release create "$tag" --target "$GITHUB_SHA" --title "指点 ZhiDian $tag" --notes-file docs/releases/desktop-installers.md
           fi
           gh release upload "$tag" release-assets/* --clobber
